@@ -1,0 +1,81 @@
+﻿@model BlogMVC.Models.ArticleCreateModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    label {
+        float: left;
+        width: 80px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    #divCreateArticle > p {
+        line-height: 30px;
+        margin: 1px;
+    }
+</style>
+
+@using (Html.BeginForm("Create", "Article", FormMethod.Post, new { id = "createArticle" }))
+{
+    <div id="divCreateArticle" style="padding: 4px;">
+        <p>
+            <label for="txtSEOTitle">
+                SEO Title
+            </label>
+            
+            <input id="txtSEOTitle" name="txtSEOTitle" type="text" style="width: 510px;"
+                   data-val="true" 
+                   data-val-regex="Поле SeoTitle должно соответствовать регулярному выражению &quot;[a-zA-Z\d\+\-]+&quot;." 
+                   data-val-regex-pattern="[a-zA-Z\d\+\-]+" 
+                   data-val-required="Требуется поле SeoTitle." id="SeoTitle" name="SeoTitle" type="text" />
+        </p>
+
+        <p>
+            <label for="txtTitle">
+                Title
+            </label>
+            <input type="text" id="txtTitle" name="txtTitle"
+                data-val="true" data-val-required="required"
+                style="width: 510px;" />
+        </p>
+
+        <p>
+            <label for="txtTags">
+                Tags
+            </label>
+            <input type="text" id="txtTags" name="txtTags"
+                data-val="true" data-val-required="required"
+                style="width: 510px;" />
+        </p>
+
+        <p>
+            <label for="txtPostDate">
+                Post Date
+            </label>
+            <input type="text" id="txtPostDate" name="txtPostDate"
+                data-val="true" data-val-required="required"
+                style="width: 100px;" />
+        </p>
+
+        <p>
+            <label for="cbIsTemp">
+                Is Temp
+            </label>
+            <input type="checkbox" id="cbIsTemp" name="cbIsTemp" />
+        </p>
+
+        @Html.MvcControl(new jQueryTE("newArticleText") { })
+
+        <p style="float: right; padding-top: 4px;">
+            <input type="submit" value="Post" />
+        </p>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

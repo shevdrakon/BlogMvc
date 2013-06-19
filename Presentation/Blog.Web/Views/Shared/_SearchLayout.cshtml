@@ -1,0 +1,16 @@
+﻿<div class="widget-sidebar">
+    <h2>
+        @Resources.Global.Search_Label
+    </h2>
+
+    <div class="ct-search">
+        @using (Html.BeginForm("Search", "Blog", new { pageIndex = 1 }, FormMethod.Get, new { id = "searchform" }))
+        {
+            @Html.TextBox("q", null, new Dictionary<string, object> { { "placeholder", "search" } })
+        
+            <span class="ct-submit-bg">
+                <input type="submit" id="searchsubmit" value="" />
+            </span>
+        }
+    </div>
+</div>

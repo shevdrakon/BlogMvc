@@ -1,0 +1,65 @@
+﻿<div id="@ViewBag.ContainerId" class="reply">
+    <div class="postbox">
+        <div class="avatar">
+            <span class="user">
+                <img data-role="user-avatar" src="http://mediacdn.disqus.com/1361595726/images/noavatar92.png">
+            </span>
+        </div>
+
+        @using (var form = Html.BeginForm("Reply", "Blog", new RouteValueDictionary{{"Id", ViewBag.ReplyToId}}))
+        {
+            <div class="textarea-wrapper" data-role="textarea">
+                <div class="textarea" contenteditable="true" tabindex="0" role="textbox" aria-multiline="true" style="overflow: auto; max-height: 350px;">
+                </div>
+
+                <div class="post-actions">
+                    <ul class="wysiwyg">
+                        <li>
+                            <a href="#" tabindex="-1" data-action="bold" class="bold" title="Bold">
+                                <span>Bold</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" tabindex="-1" data-action="italic" class="italics" title="Italic">
+                                <span>Italic</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="logged-out auth-section">
+                <section data-tab="auth-external">
+                    <div class="connect">
+                        <h6>Connect With</h6>
+                        <ul class="services">
+                            <li class="auth-twitter">
+                                <a data-action="auth:twitter" href="#" title="Twitter">Twitter</a>
+                            </li>
+                            <li class="auth-facebook">
+                                <a data-action="auth:facebook" href="#" title="Facebook">Facebook</a>
+                            </li>
+                            <li class="auth-google">
+                                <a data-action="auth:google" href="#" title="Google">Google</a>
+                            </li>
+                            <li class="auth-disqus">
+                                <a data-action="auth:disqus" href="#" title="Disqus">Disqus</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="guest">
+                        <h6>Or Pick A Name</h6>
+                        <p class="input-wrapper">
+                            <input type="text" placeholder="@Resources.Global.Name" name="author-name" maxlength="30" />
+                        </p>
+                    </div>
+
+                    <div class="proceed">
+                        <button type="submit" class="btn submit">Article</button>
+                    </div>
+                </section>
+            </div>
+        }
+    </div>
+</div>

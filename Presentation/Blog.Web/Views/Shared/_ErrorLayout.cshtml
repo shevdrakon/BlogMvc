@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Oops!</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/artarius/css")
+</head>
+
+<body>
+    <div id="error" class="error-content" style="padding-top: 150px;">
+        <div class="error-block">
+            <h1></h1>
+            <h2></h2>
+            <div class="dontWorry">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

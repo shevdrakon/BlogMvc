@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<menu>
+  <menuItem text="Home" action="Index" controller="Blog" />
+  <menuItem text="About Me / CV" action="About" controller="Blog" />
+  <menuItem text="Create new article" action="Create" controller="Article" />
+</menu>

@@ -1,0 +1,32 @@
+﻿@using BlogMVC.Extensions
+
+@model BlogMVC.ViewModel.ArticleDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/_ArticleLayout.cshtml", Model)
+
+<div class="comments">
+    <h4>
+        @Model.RepliesCount
+    </h4>
+
+    <div class="comments-block">
+        @{
+            var replyConatinerId = string.Format("reply-main");
+        }
+
+        @Html.Partial("~/Views/Shared/_ReplyLayout.cshtml", new ViewDataDictionary { { "ContainerId", replyConatinerId } })
+        <script>
+            $('#@replyConatinerId').replyController({ waterMarkText: 'Leave a message...' });
+        </script>
+
+        @if (!Model.Replies.IsEmpty())
+        {
+            @Html.Partial("~/Views/Shared/_PostsListLayout.cshtml", Model.Replies, new ViewDataDictionary { { "CssClass", "post-list" } })
+        }
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model BlogMVC.BLL.Entities.Reply
+
+<div class="post-content">
+    <div class="avatar hovercard">
+        <a href="#" class="user" data-action="profile" data-user="37716694">
+            <img src="http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fmediacdn.disqus.com%2F1361820143%2Fimages%2Fnoavatar92.png&amp;size=92&amp;gravatar_id=1ef366cd805f17214972c4c393543da3" alt="Avatar">
+        </a>
+    </div>
+
+    <div class="post-body">
+        <header>
+            <span class="publisher-anchor-color">
+                <a href="#" data-action="profile" data-user="37716694">RITURAJ RATAN</a>
+            </span>
+
+            <span class="bullet" aria-hidden="true">•</span>
+
+            <a href="#comment-769446915" data-role="relative-time" class="time-ago" title="Wednesday, January 16 2013 6:37 AM">a month ago</a>
+
+            <ul class="post-menu">
+                <li class="collapse">
+                    <a href="#" data-action="collapse" title="Collapse">−</a>
+                </li>
+                <li class="expand" style="display: none">
+                    <a href="#" data-action="expand" title="Expand">+</a>
+                </li>
+            </ul>
+        </header>
+
+        <div class="post-message-container" data-role="message-container">
+            <div class="post-message publisher-anchor-color " data-role="message">
+                <p>
+                    @Html.Raw(Model.HtmlText)
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <menu>
+                <li class="reply">
+                    <a href="#" data-action="reply">Reply</a>
+                </li>
+            </menu>
+        </footer>
+    </div>
+</div>

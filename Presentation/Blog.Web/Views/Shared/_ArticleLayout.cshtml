@@ -1,0 +1,25 @@
+﻿@model BlogMVC.ViewModel.ArticleViewModel
+
+<div class="post-article">
+    <h3 class="post-article-title">
+        @Model.TitleHtml
+    </h3>
+
+    <div class="post-article-meta">
+        <span class="italic">
+            @string.Format(Resources.Global.Posted_Date, "VadimS", Model.Date)
+            
+            @Model.TagsHtml
+
+            @if (Model.CommentsCountHtml != null)
+            {
+                @Html.Raw("&nbsp - &nbsp;"); 
+                @Model.CommentsCountHtml;
+            }
+        </span>
+    </div>
+
+    <div class="post-article-body">
+        @Html.Raw(@Model.Html)
+    </div>
+</div>

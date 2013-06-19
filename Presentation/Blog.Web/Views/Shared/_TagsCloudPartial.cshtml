@@ -1,0 +1,40 @@
+﻿@using Blog.Core.Infrastructure
+@using Blog.Services.Articles
+@using BlogMVC.BLL
+
+<div class="widget-sidebar">
+    <h2>
+        @Resources.Global.Tags_Label
+    </h2>
+
+    <div class="cloud-label-widget-content">
+        @{
+            var repository = EngineContext.Current.Container.Resolve<IArticleRepository>();
+            var tagsMap = repository.GetTagsMap();
+
+            if (tagsMap.Count != 0)
+            {
+                var max = tagsMap.Max(o => o.Value);
+                var min = tagsMap.Min(o => o.Value);
+
+                var maxPercent = 160;
+                var minPercent = 80;
+
+                var multiplier = (maxPercent - minPercent) / (max - min);
+
+                foreach (var tagInfo in tagsMap)
+                {
+                    //var size = minPercent + (max - (max - (tagInfo.Value - min))) * multiplier;
+                    var size = minPercent + multiplier * (tagInfo.Value - min);
+
+            <span class="label-size" style="font-size: @size%">
+                @Html.ActionLink(tagInfo.Key, "Tag", "Blog", new { tagName = TagHelper.GetTagNameForOutput(tagInfo.Key), pageIndex = 1 }, new { dir = "ltr" })
+
+                <span class="label-count" dir="ltr">(@tagInfo.Value)
+                </span>
+            </span>
+                }
+            }
+        }
+    </div>
+</div>

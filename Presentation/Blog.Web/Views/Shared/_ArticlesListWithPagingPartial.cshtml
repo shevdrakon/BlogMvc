@@ -1,0 +1,11 @@
+﻿@model BlogMVC.ViewModel.PostListViewModel
+
+<div>
+    @foreach (var model in Model.Posts)
+    {
+        @Html.Partial("~/Views/Shared/_ArticleLayout.cshtml", model)
+    }
+</div>
+
+<div style="clear: both;"></div>
+@Html.MvcControl(new PagingControl(Model.PagesCount))

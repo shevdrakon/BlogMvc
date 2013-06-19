@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/artarius/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/controls")
+</head>
+
+<body>
+    <div class="outer-wrapper">
+        <div class="container-wrapper">
+            <header class="header-wrapper">
+                <hgroup class="site-title float-left clear-fix">
+                    <h2>
+                        @Html.ActionLink("Vadim Sheydakov", "Index", "Blog", new { pageIndex = 1 }, null)
+                    </h2>
+                    <h1>
+                        @Html.ActionLink("{ rusty }", "Index", "Blog", new { pageIndex = 1 }, null)
+                    </h1>
+                </hgroup>
+
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                </div>
+
+                <div class="header-language-switcher">
+                    @Html.LanguageSelectorLink("ru", "In Russian", "In Russian", null)
+                    @Html.LanguageSelectorLink("en", "In English", "In English", null)
+                </div>
+            </header>
+
+            @Html.MvcControl(new Menu { SourceXml = "~\\App_Data\\menu.xml", Class = "clearfix" })
+
+            @RenderSection("featured", required: false)
+
+            <section class="content-wrapper clearfix">
+                <div class="rsidebar-wrapper">
+                    @Html.Partial("_SearchLayout")
+                    @Html.Partial("_TagsCloudPartial")
+                </div>
+
+                <div class="main-wrapper">
+                    @RenderBody()
+                </div>
+
+                <div class="clear">&nbsp;</div>
+            </section>
+
+            <div class="cre" style="position: relative; height: 40px; line-height: 1.4em; margin: 0 0 0 10px; font-size: .9em">
+                <p>
+                    Copyright <a href="http://artarius-demo.blogspot.ru/">ARTARIUS</a>
+                    <br>
+                    @Resources.Global.PersonalOpinionNotice
+
+                    <span style="position: absolute; top: 5px; right: 10px;">
+                        Vadim Sheydakov @DateTime.Now.Year
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

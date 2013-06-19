@@ -1,0 +1,22 @@
+﻿@using BlogMVC.Extensions
+
+@model List<BlogMVC.BLL.Entities.Reply>
+
+<ul class="@ViewBag.CssClass">
+    @if (!Model.IsEmpty())
+    {
+        foreach (var reply in Model)
+        {
+            var postId = string.Format("post-{0}", reply.Id);
+                
+            <li id="@postId" class="post">
+                @Html.Partial("~/Views/Shared/_PostContentLayout.cshtml", reply)
+                @Html.Partial("~/Views/Shared/_PostsListLayout.cshtml", reply.Replies, new ViewDataDictionary { { "CssClass", "children" } })
+            </li>
+        
+            <script>
+                $('#@postId').postController({ id: '@reply.Id' });
+            </script>
+        }
+    }
+</ul>
